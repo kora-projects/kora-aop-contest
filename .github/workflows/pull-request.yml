@@ -1,0 +1,38 @@
+name: CI Pull Request
+
+on:
+  pull_request:
+    branches:
+      - master
+      - dev
+
+
+permissions:
+  checks: write
+  pull-requests: write
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '21' ]
+    name: Pull Request Java ${{ matrix.java }} action
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'adopt'
+
+      - name: Code Style
+        run: './gradlew spotlessCheck'
+
+      - name: Build
+        run: './gradlew classes'
+
+      - name: Test
+        run: './gradlew test jacocoTestReport testCodeCoverageReport'

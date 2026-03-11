@@ -1,0 +1,30 @@
+name: CI Master
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: 0 0 * * 0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '21' ]
+    name: Master Java ${{ matrix.java }} action
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'adopt'
+
+      - name: Build
+        run: './gradlew classes'
+
+      - name: Test
+        run: './gradlew test jacocoTestReport testCodeCoverageReport'
