@@ -1,0 +1,64 @@
+<aspectj>
+    <aspects>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAround1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAround2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAround3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAround4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAround5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBefore1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBefore2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBefore3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBefore4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBefore5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeNoJoinPoint1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeNoJoinPoint2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeNoJoinPoint3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeNoJoinPoint4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeNoJoinPoint5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterPointcut1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterPointcut2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterPointcut3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterPointcut4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterPointcut5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterReturningPointcut1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterReturningPointcut2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterReturningPointcut3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterReturningPointcut4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableBeforeAfterReturningPointcut5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfter1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfter2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfter3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfter4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfter5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturning1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturning2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturning3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturning4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturning5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterNoJoinPoint1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterNoJoinPoint2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterNoJoinPoint3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterNoJoinPoint4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterNoJoinPoint5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturningNoJoinPoint1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturningNoJoinPoint2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturningNoJoinPoint3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturningNoJoinPoint4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj.aspect.AspectLoggableAfterReturningNoJoinPoint5"/>
+
+        <aspect name="org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect"/>
+        <aspect name="org.springframework.beans.factory.aspectj.AbstractDependencyInjectionAspect"/>
+        <aspect name="org.springframework.beans.factory.aspectj.AbstractInterfaceDrivenDependencyInjectionAspect"/>
+    </aspects>
+    <weaver options="-verbose -showWeaveInfo">
+        <include within="ru.tinkoff.benchmark.aop.utils.pcw_spring..*"/>
+        <include within="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj..*"/>
+        <include within="ru.tinkoff.benchmark.aop.spring.pcw.emulator..*"/>
+        <include within="org.springframework.beans.factory.aspectj..*"/>
+    </weaver>
+</aspectj>

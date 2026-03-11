@@ -1,0 +1,32 @@
+plugins {
+    id "java"
+    id "application"
+
+    id "org.springframework.boot" version "$springBootVersion"
+    id "io.spring.dependency-management" version "$springManagementVersion"
+}
+
+application {
+    mainClass = "ru.tinkoff.benchmark.aop.spring.ctw.Bench"
+}
+
+dependencyManagement {
+    applyMavenExclusions = false
+}
+
+// We have to separate JMH bench and source code for CTW, cause
+// ajc compiler is used for compilation sources and it conflicts with JMH annotation processor
+// and probably other processors, so it is easier to encapsulate CTW compiled code in separate module
+// same with tests, due to complicated compilation tests broke on standard compile build phase
+dependencies {
+    annotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.37"
+    implementation "org.openjdk.jmh:jmh-core:1.37"
+
+    implementation project(":benchmark-aop:benchmark-aop-common")
+    implementation project(":util:benchmark-aop-spring-utils")
+
+    implementation project(":benchmark-aop:benchmark-aop-java-spring-ctw")
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.mockito:mockito-core:$mockito"
+}

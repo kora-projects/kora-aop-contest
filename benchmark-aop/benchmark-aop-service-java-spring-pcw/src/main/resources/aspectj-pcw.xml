@@ -1,0 +1,24 @@
+<aspectj>
+    <aspects>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring.aspect.AspectLoggable5"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_kora.aspect.AspectCacheableKora"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_kora.aspect.AspectCircuitBreakerKora"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_kora.aspect.AspectRetryKora"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_kora.aspect.AspectTimeoutKora"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.pcw_spring_kora.aspect.AspectValidateAspectj"/>
+
+        <aspect name="org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect"/>
+        <aspect name="org.springframework.beans.factory.aspectj.AbstractDependencyInjectionAspect"/>
+        <aspect name="org.springframework.beans.factory.aspectj.AbstractInterfaceDrivenDependencyInjectionAspect"/>
+    </aspects>
+    <weaver options="-verbose -showWeaveInfo">
+        <include within="ru.tinkoff.benchmark.aop.utils.pcw_spring..*"/>
+        <include within="ru.tinkoff.benchmark.aop.utils.pcw_spring_aspectj..*"/>
+        <include within="ru.tinkoff.benchmark.aop.spring.pcw.emulator..*"/>
+        <include within="org.springframework.beans.factory.aspectj..*"/>
+    </weaver>
+</aspectj>

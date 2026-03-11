@@ -1,0 +1,18 @@
+<aspectj>
+    <aspects>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.spring.aspect.AspectLoggable1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.spring.aspect.AspectLoggable2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.spring.aspect.AspectLoggable3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.spring.aspect.AspectLoggable4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.spring.aspect.AspectLoggable5"/>
+
+        <aspect name="org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect"/>
+        <aspect name="org.springframework.beans.factory.aspectj.AbstractDependencyInjectionAspect"/>
+        <aspect name="org.springframework.beans.factory.aspectj.AbstractInterfaceDrivenDependencyInjectionAspect"/>
+    </aspects>
+    <weaver options="-verbose -showWeaveInfo">
+        <include within="ru.tinkoff.benchmark.aop.utils.spring..*"/>
+        <include within="ru.tinkoff.benchmark.aop.utils.spring_aspectj..*"/>
+        <include within="ru.tinkoff.benchmark.aop.spring.ltw.emulator..*"/>
+    </weaver>
+</aspectj>

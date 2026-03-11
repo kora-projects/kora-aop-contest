@@ -1,0 +1,41 @@
+services:
+  spring-java-aop:
+    image: spring-java-aop
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+      - '8085:8085'
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1152M
+        reservations:
+          cpus: '2.0'
+          memory: 1152M
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "--max-time", "1", "http://localhost:8085/actuator/health" ]
+      interval: 1s
+      timeout: 1s
+      retries: 90
+
+
+  spring-java-aop-pcw:
+    image: spring-java-aop-pcw
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+      - '8085:8085'
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1152M
+        reservations:
+          cpus: '2.0'
+          memory: 1152M
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "--max-time", "1", "http://localhost:8085/actuator/health" ]
+      interval: 1s
+      timeout: 1s
+      retries: 90

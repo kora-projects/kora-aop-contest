@@ -1,0 +1,32 @@
+plugins {
+    id "java"
+    id "application"
+
+    id "org.springframework.boot" version "$springBootVersion"
+    id "io.spring.dependency-management" version "$springManagementVersion"
+}
+
+application {
+    mainClass = "ru.tinkoff.benchmark.aop.spring.Bench"
+}
+
+dependencyManagement {
+    applyMavenExclusions = false
+}
+
+dependencies {
+    annotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.37"
+    implementation "org.openjdk.jmh:jmh-core:1.37"
+
+    implementation project(":benchmark-aop:benchmark-aop-common")
+    implementation project(":util:benchmark-aop-spring-utils")
+
+    // Spring
+    implementation "org.springframework.boot:spring-boot-starter-aop"
+
+    // Tests
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.mockito:mockito-core:$mockito"
+}
+
+

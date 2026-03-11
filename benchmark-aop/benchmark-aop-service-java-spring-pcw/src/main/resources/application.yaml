@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  undertow:
+    eager-filter-init: true
+
+
+spring:
+  aop:
+    proxy-target-class: true
+  main:
+    lazy-initialization: false
+    banner-mode: off
+
+
+logging:
+  level:
+    root: WARN
+    org.springframework.boot.web.embedded.undertow.UndertowWebServer: INFO
+    ru.tinkoff.benchmark.aop.spring.pcw.SpringApplication_CGLIB_AspectJ_PCW: INFO
+
+
+management:
+  server:
+    port: 8085
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      enabled: true
+      probes:
+        enabled: true

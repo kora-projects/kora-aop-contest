@@ -1,0 +1,33 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "kora-aop-contest"
+
+// UTIL
+include "util:benchmark-common-utils"
+include "util:benchmark-aop-common-utils"
+include "util:benchmark-aop-kora-utils"
+include "util:benchmark-aop-spring-utils"
+include "util:benchmark-aop-spring-aot-utils"
+include "util:benchmark-aop-micronaut-utils"
+include "util:benchmark-aop-quarkus-utils"
+
+// BENCH AOP
+include "benchmark-aop:benchmark-aop-common"
+include "benchmark-aop:benchmark-aop-java"
+include "benchmark-aop:benchmark-aop-java-kora"
+include "benchmark-aop:benchmark-aop-java-spring"
+include "benchmark-aop:benchmark-aop-java-spring-ltw"
+include "benchmark-aop:benchmark-aop-java-spring-ctw"
+include "benchmark-aop:benchmark-aop-java-spring-ctw-bench"
+include "benchmark-aop:benchmark-aop-java-spring-pcw"
+include "benchmark-aop:benchmark-aop-java-spring-aot-cglib"
+include "benchmark-aop:benchmark-aop-java-spring-aot-jdk-dynamic"
+include "benchmark-aop:benchmark-aop-java-micronaut"
+include "benchmark-aop:benchmark-aop-service-java-spring"
+include "benchmark-aop:benchmark-aop-service-java-spring-pcw"

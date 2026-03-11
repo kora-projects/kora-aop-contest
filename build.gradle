@@ -1,0 +1,136 @@
+plugins {
+    id "com.diffplug.spotless" version "8.2.1"
+    id "com.asarkar.gradle.build-time-tracker" version "4.3.0"
+    id "org.graalvm.buildtools.native" version "0.11.3" apply false
+}
+
+group = groupId
+version = koraVersion
+
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+subprojects {
+    if (!project.childProjects.isEmpty()) {
+        return
+    }
+
+    apply plugin: "java"
+    apply plugin: "com.diffplug.spotless"
+    apply plugin: "com.asarkar.gradle.build-time-tracker"
+
+    group = groupId
+    if (project.name.contains("micronaut")) {
+        version = micronautVersion
+    } else if (project.name.contains("spring")) {
+        version = springBootVersion
+    } else if (project.name.contains("quarkus")) {
+        version = quarkusVersion
+    } else {
+        version = koraVersion
+    }
+
+    if (project.name.startsWith("benchmark-")) {
+        plugins.withType(ApplicationPlugin) {
+            run {
+                var benchType = findProperty("benchmark.type") ?: "measurement"
+                systemProperty("benchmark.type", benchType)
+
+                if (benchType == "measurement") {
+                    jvmArgs += [
+                            "-Xmx3048M",
+                            "-Xms3048M",
+                            "-XX:+AlwaysPreTouch",
+                            "-XX:InitialCodeCacheSize=256M",
+                            "-XX:ReservedCodeCacheSize=1024M",
+                            "-XX:+UseCodeCacheFlushing",
+                            "-XX:MaxInlineSize=1024", //kb
+                            "-XX:FreqInlineSize=1024", //kb
+                            "-XX:CompileThreshold=15000",
+                            "-XX:CICompilerCount=${Math.max(Math.divideExact(Runtime.getRuntime().availableProcessors(), 4) + 1, 2)}",
+                            "-XX:-TieredCompilation", // only C2 always
+                            "-XX:+UseG1GC",
+                    ]
+                } else {
+                    jvmArgs += [
+                            "-Xmx3048M",
+                            "-Xms3048M",
+                            "-XX:+AlwaysPreTouch",
+                            "-XX:InitialCodeCacheSize=256M",
+                            "-XX:ReservedCodeCacheSize=1024M",
+                            "-XX:+UseG1GC",
+                    ]
+                }
+            }
+        }
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    configurations {
+        configureEach {
+            resolutionStrategy {
+                cacheChangingModulesFor 0, "seconds" // check for updates every build
+            }
+        }
+    }
+
+    test {
+        maxParallelForks = 1
+        useJUnitPlatform()
+        testLogging {
+            showStandardStreams(false)
+            events("passed", "skipped", "failed")
+            exceptionFormat("full")
+        }
+
+        jvmArgs += [
+                "-XX:+TieredCompilation",
+                "-XX:TieredStopAtLevel=1",
+        ]
+
+        reports {
+            html.required = false
+            junitXml.required = true
+        }
+    }
+
+    compileJava {
+        options.encoding("UTF-8")
+        options.incremental(true)
+        options.fork = false
+    }
+
+    javadoc {
+        options.encoding = "UTF-8"
+        if (JavaVersion.current().isJava9Compatible()) {
+            options.addBooleanOption("html5", true)
+        }
+    }
+
+    spotless {
+        java {
+            encoding("UTF-8")
+            importOrder()
+                    .semanticSort()
+                    .wildcardsLast()
+            removeUnusedImports()
+            formatAnnotations()
+            eclipse("4.38") // https://github.com/diffplug/spotless/blob/main/plugin-gradle/README.md#eclipse-jdt
+                    .sortMembersEnabled(true)
+                    .sortMembersOrder("T,SF,SI,F,I,C,SM,M")
+                    .sortMembersDoNotSortFields(false)
+                    .sortMembersVisibilityOrderEnabled(true)
+                    .sortMembersVisibilityOrder("R,D,B,V")
+                    .configFile("${rootDir}/config/codestyle.xml")
+            targetExclude("**/generated/**")
+        }
+    }
+}

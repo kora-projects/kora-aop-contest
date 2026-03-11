@@ -1,0 +1,22 @@
+plugins {
+    id "java-library"
+}
+
+configurations {
+    micronautBom
+    compileOnly.extendsFrom(micronautBom)
+    implementation.extendsFrom(micronautBom)
+    annotationProcessor.extendsFrom(micronautBom)
+    testAnnotationProcessor.extendsFrom(micronautBom)
+}
+
+dependencies {
+    micronautBom enforcedPlatform("io.micronaut.platform:micronaut-platform:$micronautVersion") // Micronaut 4.0+
+
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    compileOnly "io.micronaut:micronaut-inject-java"
+
+    api project(":util:benchmark-aop-common-utils")
+
+    implementation "io.micronaut:micronaut-aop"
+}

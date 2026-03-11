@@ -1,0 +1,51 @@
+plugins {
+    id "java"
+    id "application"
+
+    id "org.springframework.boot" version "$springBootVersion"
+    id "io.spring.dependency-management" version "$springManagementVersion"
+}
+
+application {
+    mainClass = "ru.tinkoff.benchmark.aop.spring.ltw.Bench"
+}
+
+dependencyManagement {
+    applyMavenExclusions = false
+}
+
+dependencies {
+    annotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.37"
+    implementation "org.openjdk.jmh:jmh-core:1.37"
+
+    implementation project(":benchmark-aop:benchmark-aop-common")
+    implementation project(":util:benchmark-aop-spring-utils")
+
+    // Spring
+    runtimeOnly "org.springframework:spring-instrument"
+    runtimeOnly "org.aspectj:aspectjrt:$aspectj"
+    implementation "org.aspectj:aspectjweaver:$aspectj"
+
+    implementation "org.springframework.boot:spring-boot-starter-aop"
+
+    // Tests
+    testRuntimeOnly "org.springframework:spring-instrument"
+    testRuntimeOnly "org.aspectj:aspectjrt:$aspectj"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+run {
+    jvmArgs = [
+            "-XX:+EnableDynamicAgentLoading",
+            "-javaagent:${(configurations.runtimeClasspath.find { it.name.contains("spring-instrument") } as File).absolutePath}",
+            "-javaagent:${(configurations.runtimeClasspath.find { it.name.contains("aspectjweaver") } as File).absolutePath}",
+    ]
+}
+
+test {
+    jvmArgs = [
+            "-XX:+EnableDynamicAgentLoading",
+            "-javaagent:${(configurations.testRuntimeClasspath.find { it.name.contains("spring-instrument") } as File).absolutePath}",
+            "-javaagent:${(configurations.testRuntimeClasspath.find { it.name.contains("aspectjweaver") } as File).absolutePath}",
+    ]
+}

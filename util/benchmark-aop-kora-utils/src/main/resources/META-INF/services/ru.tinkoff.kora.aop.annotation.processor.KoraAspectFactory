@@ -1,0 +1,5 @@
+ru.tinkoff.benchmark.aop.utils.kora.aspect.Loggable1KoraAspectFactory
+ru.tinkoff.benchmark.aop.utils.kora.aspect.Loggable2KoraAspectFactory
+ru.tinkoff.benchmark.aop.utils.kora.aspect.Loggable3KoraAspectFactory
+ru.tinkoff.benchmark.aop.utils.kora.aspect.Loggable4KoraAspectFactory
+ru.tinkoff.benchmark.aop.utils.kora.aspect.Loggable5KoraAspectFactory

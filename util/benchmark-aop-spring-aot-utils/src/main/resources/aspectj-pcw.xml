@@ -1,0 +1,13 @@
+<aspectj>
+    <aspects>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.aot.pcw_spring.aspect.AspectAotPcwLoggable1"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.aot.pcw_spring.aspect.AspectAotPcwLoggable2"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.aot.pcw_spring.aspect.AspectAotPcwLoggable3"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.aot.pcw_spring.aspect.AspectAotPcwLoggable4"/>
+        <aspect name="ru.tinkoff.benchmark.aop.utils.aot.pcw_spring.aspect.AspectAotPcwLoggable5"/>
+    </aspects>
+    <weaver options="-verbose -showWeaveInfo">
+        <include within="ru.tinkoff.benchmark.aop.utils.aot.pcw_spring..*"/>
+        <exclude within="ru.tinkoff.benchmark.aop.utils.aot.spring..*"/>
+    </weaver>
+</aspectj>

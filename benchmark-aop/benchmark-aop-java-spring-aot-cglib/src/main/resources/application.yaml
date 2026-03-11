@@ -1,0 +1,8 @@
+spring:
+  main:
+    lazy-initialization: false
+    banner-mode: off
+  aop:
+    proxy-target-class: true
+
+

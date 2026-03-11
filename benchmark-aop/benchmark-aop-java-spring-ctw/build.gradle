@@ -1,0 +1,46 @@
+plugins {
+    id "java-library"
+
+    id "org.springframework.boot" version "$springBootVersion"
+    id "io.spring.dependency-management" version "$springManagementVersion"
+    id "io.freefair.aspectj" version "$aspectjFreefair"
+}
+
+bootJar {
+    mainClass = "ru.tinkoff.benchmark.aop.spring.ctw.SpringApplication_AspectJ_CGLIB_CTW"
+}
+
+dependencyManagement {
+    applyMavenExclusions = false
+}
+
+dependencies {
+    implementation project(":benchmark-aop:benchmark-aop-common")
+    implementation project(":util:benchmark-aop-spring-utils")
+
+    // Spring
+    aspect project(":util:benchmark-aop-spring-utils")
+    aspect "org.aspectj:aspectjrt:$aspectj"
+    aspect "org.aspectj:aspectjweaver:$aspectj"
+    aspect "org.aspectj:aspectjtools:$aspectj"
+
+    implementation "org.aspectj:aspectjrt:$aspectj"
+    implementation "org.aspectj:aspectjweaver:$aspectj"
+
+    api "org.springframework.boot:spring-boot-starter-aop"
+
+    // Tests
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+// By default Freefair disables all compile*Java tasks for CTW
+// Config not required cause all on compile path is automatically subjected for weaving and compiled if possible
+// but still possible if required
+
+compileAspectj {
+    options.compilerArgs = [
+            // SPEL aspects like Cacheable can't find args (event "-parameters" not helping, so specify args in SPEL by number like #a0)
+            "-xmlConfigured", "${projectDir}/src/main/resources/aspectj-ctw.xml",
+    ]
+}
+

@@ -1,0 +1,11 @@
+plugins {
+    id "java-library"
+}
+
+dependencies {
+    api project(":util:benchmark-aop-common-utils")
+
+    implementation "com.squareup:javapoet:1.13.0"
+    implementation "ru.tinkoff.kora:aop-annotation-processor:$koraVersion"
+    implementation "ru.tinkoff.kora:common:$koraVersion"
+}

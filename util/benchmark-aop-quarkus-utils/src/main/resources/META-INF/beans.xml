@@ -1,0 +1,13 @@
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
+       version="2.0" bean-discovery-mode="all">
+
+    <interceptors>
+        <class>ru.tinkoff.benchmark.aop.utils.quarkus.aspect.Loggable1Interceptor</class>
+        <class>ru.tinkoff.benchmark.aop.utils.quarkus.aspect.Loggable2Interceptor</class>
+        <class>ru.tinkoff.benchmark.aop.utils.quarkus.aspect.Loggable3Interceptor</class>
+        <class>ru.tinkoff.benchmark.aop.utils.quarkus.aspect.Loggable4Interceptor</class>
+        <class>ru.tinkoff.benchmark.aop.utils.quarkus.aspect.Loggable5Interceptor</class>
+    </interceptors>
+</beans>

@@ -1,0 +1,24 @@
+plugins {
+    id "java-library"
+}
+
+configurations {
+    quarkusBom
+    compileOnly.extendsFrom(quarkusBom)
+    implementation.extendsFrom(quarkusBom)
+    api.extendsFrom(quarkusBom)
+}
+
+dependencies {
+    quarkusBom platform("io.quarkus:quarkus-universe-bom:$quarkusVersion")
+
+    implementation "io.quarkus:quarkus-arc"
+
+    api project(":util:benchmark-aop-common-utils")
+}
+
+compileJava {
+    options.compilerArgs = [
+            "-parameters"
+    ]
+}

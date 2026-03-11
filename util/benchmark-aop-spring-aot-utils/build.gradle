@@ -1,0 +1,27 @@
+plugins {
+    id "java-library"
+
+    id "org.springframework.boot" version "$springBootVersion"
+    id "io.spring.dependency-management" version "$springManagementVersion"
+}
+
+dependencyManagement {
+    applyMavenExclusions = false
+}
+
+bootJar {
+    enabled = false
+}
+
+dependencies {
+    compileOnly "org.aspectj:aspectjweaver:$aspectj"
+    compileOnly "org.aspectj:aspectjrt:$aspectj"
+    runtimeOnly "org.aspectj:aspectjweaver:$aspectj"
+    runtimeOnly "org.aspectj:aspectjrt:$aspectj"
+
+    api project(":util:benchmark-aop-common-utils")
+
+    implementation "org.springframework:spring-context"
+    implementation "org.springframework:spring-aop"
+    implementation "jakarta.validation:jakarta.validation-api:$jakartaValidation"
+}
